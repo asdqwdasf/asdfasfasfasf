@@ -23,7 +23,7 @@ btn.addEventListener("click", function() {
     const reader = new FileReader();
     reader.onload = function(event) {
       const photoBase64 = event.target.result;
-      tg.sendData(message, photoBase64);
+      tg.sendData(photoBase64);
     };
     reader.readAsDataURL(photoFile);
   } else {
