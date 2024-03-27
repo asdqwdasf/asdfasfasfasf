@@ -13,21 +13,21 @@ btn.addEventListener("click", function() {
   const message = messageBox.value;
   const photoFile = photoInput.files[0];
 
-  console.log(photoFile);
-
   tg.MainButton.setText("Сообщение отправлено!");
   tg.MainButton.show();
+
+  TextToSend = `${message}`
   
   if (photoFile) {
     // If photo is selected, convert it to Base64 and send along with the message
     const reader = new FileReader();
     reader.onload = function(event) {
       const photoBase64 = event.target.result;
-      tg.sendData(photoBase64);
+      TextToSend += photoBase64
     };
     reader.readAsDataURL(photoFile);
   } else {
-    // If no photo selected, send only the message
-    tg.sendData(message);
+    TextToSend += 'Нету фото'
   }
+  tg.sendData(TextToSend);
 });
