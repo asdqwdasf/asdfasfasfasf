@@ -19,13 +19,7 @@ btn.addEventListener("click", function() {
   TextToSend = `${message}`
   
   if (photoFile) {
-    // If photo is selected, convert it to Base64 and send along with the message
-    const reader = new FileReader();
-    reader.onload = function(event) {
-      const photoBase64 = event.target.result;
-      TextToSend += photoBase64
-    };
-    reader.readAsDataURL(photoFile);
+    TextToSend += 'Вот фото'
   } else {
     TextToSend += 'Нету фото'
   }
