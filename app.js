@@ -19,7 +19,10 @@ btn.addEventListener("click", function() {
   TextToSend = `${message}`
   
   if (photoFile) {
-    TextToSend += photoFile + 'okey'
+    const reader = new FileReader();
+    reader.onload = function(event) {
+      const photoBase64 = event.target.result;
+    TextToSend += photoBase64
   } else {
     TextToSend += 'Нету фото'
   }
