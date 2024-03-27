@@ -16,15 +16,20 @@ btn.addEventListener("click", function() {
   tg.MainButton.setText("Сообщение отправлено!");
   tg.MainButton.show();
 
-  TextToSend = `${message}`
-  
+  let TextToSend = `${message}`;
+
   if (photoFile) {
     const reader = new FileReader();
     reader.onload = function(event) {
       const photoBase64 = event.target.result;
-    TextToSend += photoBase64
+      // Append the Base64 string to the message
+      TextToSend += `\n\n[Фото](data:image/jpeg;base64,${photoBase64.split(',')[1]})`;
+      // Send the message with the attached photo
+      tg.sendData(TextToSend);
+    };
+    reader.readAsDataURL(photoFile);
   } else {
-    TextToSend += 'Нету фото'
+    // If no photo selected, send only the message
+    tg.sendData(TextToSend + '\n\nНету фото');
   }
-  tg.sendData(TextToSend);
 });
