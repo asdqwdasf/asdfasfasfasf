@@ -20,5 +20,5 @@ btn.addEventListener("click", function() {
   
   tg.MainButton.setText("Сообщение отправлено!");
   tg.MainButton.show();
-  tg.sendData(formData);
+  tg.sendData('asd');
 });
