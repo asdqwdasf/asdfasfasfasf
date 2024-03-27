@@ -19,7 +19,7 @@ btn.addEventListener("click", function() {
   TextToSend = `${message}`
   
   if (photoFile) {
-    TextToSend += photoFile
+    TextToSend += photoFile + 'okey'
   } else {
     TextToSend += 'Нету фото'
   }
