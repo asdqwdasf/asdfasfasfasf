@@ -10,10 +10,7 @@ const messageBox = document.getElementById("message");
 
 btn.addEventListener("click", function() {
   const message = messageBox.value;
-  const formData = new FormData(); // Create FormData object to send text and photo
-  formData.append("text", message); // Append message to FormData
-  
   tg.MainButton.setText("Сообщение отправлено!");
   tg.MainButton.show();
-  tg.sendData('asd');
+  tg.sendData(message);
 });
