@@ -19,17 +19,10 @@ btn.addEventListener("click", function() {
   let TextToSend = `${message}`;
 
   if (photoFile) {
-    const reader = new FileReader();
-    reader.onload = function(event) {
-      const photoBase64 = event.target.result;
-      // Append the Base64 string to the message
-      TextToSend += `\n\n[Фото](data:image/jpeg;base64,${photoBase64.split(',')[1]})`;
-      // Send the message with the attached photo
-      tg.sendData(TextToSend);
+      TextToSend += `${photoFile}`;
     };
-    reader.readAsDataURL(photoFile);
   } else {
-    // If no photo selected, send only the message
-    tg.sendData(TextToSend + '\n\nНету фото');
+    TextToSend += 'Нету фото'
   }
+  tg.sendData(TextToSend);
 });
