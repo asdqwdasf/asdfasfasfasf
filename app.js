@@ -27,7 +27,7 @@ btn.addEventListener("click", async function() {
     jsonData.imageUrl = false;
   }
 
-  tg.sendData(jsonData);
+  tg.sendData(imageUrl);
 });
 
 async function uploadPhoto(photoFile) {
