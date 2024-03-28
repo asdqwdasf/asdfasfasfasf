@@ -20,9 +20,7 @@ btn.addEventListener("click", async function() {
     jsonData.imageUrl = false;
   }
 
-  const jsonString = JSON.stringify(jsonData); 
-
-  tg.sendData(jsonString);
+  tg.sendData(jsonData);
 });
 
 async function uploadPhoto(photoFile) {
