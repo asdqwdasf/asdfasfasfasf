@@ -1,3 +1,10 @@
+let tg = window.Telegram.WebApp;
+
+tg.expand();
+
+tg.MainButton.textColor = "#FFFFFF";
+tg.MainButton.color = "#FF00FF";
+
 const btn = document.getElementById("btn");
 const messageBox = document.getElementById("message");
 const photoInput = document.getElementById("photo");
