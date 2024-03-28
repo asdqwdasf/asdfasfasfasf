@@ -20,7 +20,6 @@ btn.addEventListener("click", function() {
 
   if (photoFile) {
       TextToSend += `${photoFile}`;
-    };
   } else {
     TextToSend += 'Нету фото'
   }
