@@ -1,10 +1,3 @@
-let tg = window.Telegram.WebApp;
-
-tg.expand();
-
-tg.MainButton.textColor = "#FFFFFF";
-tg.MainButton.color = "#FF00FF";
-
 const btn = document.getElementById("btn");
 const messageBox = document.getElementById("message");
 const photoInput = document.getElementById("photo");
@@ -16,22 +9,23 @@ btn.addEventListener("click", async function() {
   tg.MainButton.setText("Сообщение отправлено!");
   tg.MainButton.show();
 
-  let TextToSend = `${message}`;
+  let jsonData = {
+    message: message
+  };
 
   if (photoFile) {
-    const imageUrl = await uploadPhoto(photoFile); // Функция для загрузки фото и получения прямой ссылки
-    TextToSend += `<a href="${imageUrl}">Photo</a>`; // Добавляем ссылку на фото в сообщение
+    const imageUrl = await uploadPhoto(photoFile); 
+    jsonData.imageUrl = imageUrl; 
   } else {
-    TextToSend += 'Нету фото';
+    jsonData.imageUrl = 'Нету фото';
   }
 
-  tg.sendData(TextToSend);
+  const jsonString = JSON.stringify(jsonData); 
+
+  tg.sendData(jsonString);
 });
 
 async function uploadPhoto(photoFile) {
-  // Реализуйте функцию для загрузки фото на сервер и получения прямой ссылки
-  // Например, вы можете использовать fetch API для отправки файла на сервер и получения ссылки на него
-  // Пример реализации для загрузки на сервер Imgur:
   const formData = new FormData();
   formData.append('image', photoFile);
 
