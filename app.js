@@ -8,42 +8,57 @@ tg.MainButton.color = "#FF00FF";
 const btn = document.getElementById("btn");
 const messageBox = document.getElementById("message");
 const photoInput = document.getElementById("photo");
+const userIdSpan = document.getElementById("user-id");
+const isBotSpan = document.getElementById("is-bot");
+const firstNameSpan = document.getElementById("first-name");
+const lastNameSpan = document.getElementById("last-name");
+const usernameSpan = document.getElementById("username");
+const languageCodeSpan = document.getElementById("language-code");
+
+// Display user information
+userIdSpan.textContent = tg.initDataUnsafe.user.id;
+isBotSpan.textContent = tg.initDataUnsafe.user.isBot ? "Yes" : "No";
+firstNameSpan.textContent = tg.initDataUnsafe.user.first_name;
+lastNameSpan.textContent = tg.initDataUnsafe.user.last_name || "N/A";
+usernameSpan.textContent = tg.initDataUnsafe.user.username || "N/A";
+languageCodeSpan.textContent = tg.initDataUnsafe.user.language_code || "N/A";
+
 btn.addEventListener("click", async function() {
   const message = messageBox.value;
   const photoFile = photoInput.files[0];
-  tg.MainButton.setText("Сообщение отправлено!");
+  tg.MainButton.setText("Message sent!");
   tg.MainButton.show();
 
-  let TextToSend = `${message}`;
+  let textToSend = `${message}`;
 
   if (photoFile) {
-    const imageUrl = await uploadPhoto(photoFile); // Функция для загрузки фото и получения прямой ссылки
-    TextToSend += `<a href="${imageUrl}">Photo</a>`; // Добавляем ссылку на фото в сообщение
+    const imageUrl = await uploadPhoto(photoFile); // Function to upload photo and get direct link
+    textToSend += imageUrl; // Add photo link to the message
   } else {
-    TextToSend += 'Нету фото';
+    textToSend += 'No photo attached';
   }
 
-  tg.sendData(TextToSend);
+  tg.sendData(textToSend);
 });
 
 async function uploadPhoto(photoFile) {
-  // Реализуйте функцию для загрузки фото на сервер и получения прямой ссылки
-  // Например, вы можете использовать fetch API для отправки файла на сервер и получения ссылки на него
-  // Пример реализации для загрузки на сервер Imgur:
+  // Implement function to upload photo to server and get direct link
+  // For example, you can use fetch API to send file to server and get its link
+  // Example implementation for uploading to Imgur server:
   const formData = new FormData();
   formData.append('image', photoFile);
 
   const response = await fetch('https://api.imgur.com/3/image', {
     method: 'POST',
     headers: {
-      Authorization: '54fbf4fabdcc003', // Замените YOUR_CLIENT_ID на ваш API ключ Imgur
+      Authorization: 'Client-ID YOUR_CLIENT_ID', // Replace YOUR_CLIENT_ID with your Imgur API key
     },
     body: formData,
   });
   const data = await response.json();
   if (data.success) {
-    return data.data.link; // Возвращает прямую ссылку на загруженное изображение
+    return data.data.link; // Returns direct link to the uploaded image
   } else {
-    throw new Error('Ошибка при загрузке фото на сервер Imgur');
+    throw new Error('Error uploading photo to Imgur server');
   }
 }
