@@ -38,7 +38,7 @@ async function uploadPhoto(photoFile) {
   const response = await fetch('https://api.imgur.com/3/image', {
     method: 'POST',
     headers: {
-      Authorization: 'Client-ID YOUR_CLIENT_ID', // Замените YOUR_CLIENT_ID на ваш API ключ Imgur
+      Authorization: '54fbf4fabdcc003', // Замените YOUR_CLIENT_ID на ваш API ключ Imgur
     },
     body: formData,
   });
