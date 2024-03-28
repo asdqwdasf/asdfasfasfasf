@@ -17,7 +17,7 @@ btn.addEventListener("click", async function() {
     const imageUrl = await uploadPhoto(photoFile); 
     jsonData.imageUrl = imageUrl; 
   } else {
-    jsonData.imageUrl = undefined;
+    jsonData.imageUrl = false;
   }
 
   const jsonString = JSON.stringify(jsonData); 
