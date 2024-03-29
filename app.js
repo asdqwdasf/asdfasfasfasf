@@ -8,7 +8,6 @@ tg.MainButton.color = "#FF00FF";
 const btn = document.getElementById("btn");
 const messageBox = document.getElementById("message");
 const photoInput = document.getElementById("photo");
-const userIdSpan = document.getElementById("user-id");
 const isBotSpan = document.getElementById("is-bot");
 const firstNameSpan = document.getElementById("first-name");
 const lastNameSpan = document.getElementById("last-name");
@@ -16,7 +15,6 @@ const usernameSpan = document.getElementById("username");
 const languageCodeSpan = document.getElementById("language-code");
 
 // Display user information
-userIdSpan.textContent = tg.initDataUnsafe.user.id;
 isBotSpan.textContent = tg.initDataUnsafe.user.isBot ? "Yes" : "No";
 firstNameSpan.textContent = tg.initDataUnsafe.user.first_name;
 lastNameSpan.textContent = tg.initDataUnsafe.user.last_name || "N/A";
