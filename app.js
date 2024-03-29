@@ -11,7 +11,7 @@ const photoInput = document.getElementById("photo");
 const isBotSpan = document.getElementById("is-bot");
 
 // Display user information
-isBotSpan.textContent = tg
+isBotSpan.textContent = tg.initDataUnsafe
 
 btn.addEventListener("click", async function() {
   const message = messageBox.value;
