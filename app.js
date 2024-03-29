@@ -9,17 +9,9 @@ const btn = document.getElementById("btn");
 const messageBox = document.getElementById("message");
 const photoInput = document.getElementById("photo");
 const isBotSpan = document.getElementById("is-bot");
-const firstNameSpan = document.getElementById("first-name");
-const lastNameSpan = document.getElementById("last-name");
-const usernameSpan = document.getElementById("username");
-const languageCodeSpan = document.getElementById("language-code");
 
 // Display user information
-isBotSpan.textContent = tg.initDataUnsafe.user.isBot ? "Yes" : "No";
-firstNameSpan.textContent = tg.initDataUnsafe.user.first_name;
-lastNameSpan.textContent = tg.initDataUnsafe.user.last_name || "N/A";
-usernameSpan.textContent = tg.initDataUnsafe.user.username || "N/A";
-languageCodeSpan.textContent = tg.initDataUnsafe.user.language_code || "N/A";
+isBotSpan.textContent = tg
 
 btn.addEventListener("click", async function() {
   const message = messageBox.value;
